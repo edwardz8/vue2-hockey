@@ -39,7 +39,7 @@
 
     <div class="chart-container">
       <div v-if="!loaded">Loading...</div>
-      <div v-else-if="loaded">
+      <div v-else-if="pitcherlist">
         <chart :chartdata="chartdata" :options="options" :width="200" :height="300" />
       </div>
     </div>
@@ -50,7 +50,7 @@
 import methods from "../../methods";
 import gql from "graphql-tag";
 import Chart from "./Chart.vue";
-// import graphql2chartjs from "graphql2chartjs";
+// import graphql2chartjs from 'graphql2chartjs';
 
 export default {
   name: "PlayerDetails",
@@ -60,81 +60,15 @@ export default {
       pitcher: {},
       loaded: false,
       id: this.$route.params.id,
-      chartdata: null,
-/*       options: {
-        chart: {
-          polarArea: true,
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-              gridLines: {
-                display: false,
-              },
-            },
-          ],
-          xAxes: [
-            {
-              gridLines: {
-                display: true,
-              },
-            },
-          ],
-        },
-        legend: {
-          display: true,
-        },
-        pane: {
-          startAngle: 0,
-          endAngle: 360,
-        },
-        xAxis: {
-          tickInterval: 20,
-          min: 0,
-          max: 260,
-          labels: {
-            format: "{value}",
-          },
-        },
-        yAxis: {
-          min: 0,
-        },
-        plotOptions: {
-          series: {
-            pointStart: 0,
-            pointInterval: 20,
-          },
-          column: {
-            pointPadding: 0,
-            groupPadding: 0,
-          },
-        },
-        series: [
-          {
-            type: "column",
-            name: "Wins",
-            data: pitcher.wins,
-            pointPlacement: "between",
-          },
-          {
-            type: "line",
-            name: "Innings Pitched",
-            data: pitcher.innings_pitched,
-          },
-          {
-            type: "area",
-            name: "Strikeouts",
-            data: pitcher.strikeouts,
-          },
-        ],
-        responsive: true,
-        maintainAspectRatio: true,
-      }, */
+      chartdata: null
     };
   },
+/*   async mounted () {
+      this.loaded = false 
+      const { pitcherlist } = await this.$apollo.pitcher
+      this.chartdata = pitcherlist
+      this.loaded = true
+  }, */
   methods: {
     ...methods,
   },
@@ -162,7 +96,7 @@ export default {
               war
               adp
             }
-          }
+          },
         `;
       },
       update: (data) => data.pitcher,
@@ -170,20 +104,32 @@ export default {
         return {
           id: this.id,
         };
-      },
+      }
     },
-/*    subscribe: {
+/*     $subscribe: {
       pitcher: {
         query: pitcher,
         result({ data }) {
-          const g2c = new graphql2chartjs();
-          g2c.add(data, "polarArea");
-          this.chartdata = g2c.data 
-          this.loaded = true 
-          console.log(g2c.data, 'g2c data')
-        },
+          // const g2c = new graphql2chartjs();
+          // g2c.add(data, "bar");
+          this.chartData = g2c.data;
+          this.loaded = true;
+          //console.log(g2c.data)
+        }
       },
-    }, */
-  },
+  } 
+  
+  below lines go after first query pitcher
+  query {
+              PitcherChart : pitcher {
+                  id
+                  player 
+                  label: fip 
+                  data: fip
+              }
+          }
+  
+  */
+  }
 };
 </script>

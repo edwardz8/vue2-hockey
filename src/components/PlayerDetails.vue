@@ -172,7 +172,7 @@ export default {
         };
       },
     },
-/*     $subscribe: {
+/*    subscribe: {
       pitcher: {
         query: pitcher,
         result({ data }) {

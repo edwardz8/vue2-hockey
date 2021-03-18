@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Space+Grotesk&display=swap');
+
+/*! @import */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
+
+h1 {
+    font-weight: 800;
+    font-size: 32px;
+}
+
+h4 {
+    font-size: 50px;
+    font-weight: 800;
+}

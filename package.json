@@ -7,20 +7,35 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@vue/apollo-option": "^4.0.0-alpha.11",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-http": "^1.5.17",
+    "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
+    "graphql": "^15.5.0",
+    "graphql2chartjs": "^0.3.1",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
+    "vue-apollo": "^3.0.0-beta.11",
+    "vue-chartjs": "^3.5.1",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.4",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-pwa": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "autoprefixer": "^9.8.6",
+    "graphql-tag": "^2.11.0",
     "node-sass": "^4.12.0",
+    "postcss": "^7.0.35",
     "sass-loader": "^8.0.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
+    "vue-cli-plugin-apollo": "~0.22.2",
     "vue-template-compiler": "^2.6.11"
   }
 }

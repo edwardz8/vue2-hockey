@@ -1,11 +1,10 @@
 <script>
 import { PolarArea, mixins } from "vue-chartjs";
-const { reactiveProp } = mixins
 
 export default {
   name: "chart",
   extends: PolarArea,
-  mixins: [reactiveProp],
+  mixins: [mixins.reactiveProp],
   props: {
     // id: { type: Number },
     chartdata: {

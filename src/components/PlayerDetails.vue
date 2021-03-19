@@ -39,8 +39,8 @@
 
     <div class="chart-container">
       <div v-if="!loaded">Loading...</div>
-      <div v-else-if="pitcherlist">
-        <chart :chartdata="chartdata" :options="options" :width="200" :height="300" />
+      <div>
+        <!-- <chart v-if="loaded" :chartdata="chartData" :option="options" :width="100" :height="100" /> -->
       </div>
     </div>
   </div>
@@ -50,7 +50,6 @@
 import methods from "../../methods";
 import gql from "graphql-tag";
 import Chart from "./Chart.vue";
-// import graphql2chartjs from 'graphql2chartjs';
 
 export default {
   name: "PlayerDetails",
@@ -59,19 +58,19 @@ export default {
     return {
       pitcher: {},
       loaded: false,
-      id: this.$route.params.id,
-      chartdata: null
+      chartData: null,
+      options: { responsive: true, maintainAspectRatio: false }
     };
   },
-/*   async mounted () {
-      this.loaded = false 
-      const { pitcherlist } = await this.$apollo.pitcher
-      this.chartdata = pitcherlist
-      this.loaded = true
-  }, */
   methods: {
     ...methods,
   },
+  /*  async mounted() {
+    this.loaded = false 
+    const { pitcherlist } = await this.$apollo.pitcher
+    this.chartdata = pitcherlist
+    this.loaded = true
+  }, */
   apollo: {
     pitcher: {
       query() {
@@ -96,40 +95,17 @@ export default {
               war
               adp
             }
-          },
+          }
         `;
       },
       update: (data) => data.pitcher,
       variables() {
         return {
-          id: this.id,
+          id: this.$route.params.id,
         };
-      }
-    },
-/*     $subscribe: {
-      pitcher: {
-        query: pitcher,
-        result({ data }) {
-          // const g2c = new graphql2chartjs();
-          // g2c.add(data, "bar");
-          this.chartData = g2c.data;
-          this.loaded = true;
-          //console.log(g2c.data)
-        }
       },
-  } 
-  
-  below lines go after first query pitcher
-  query {
-              PitcherChart : pitcher {
-                  id
-                  player 
-                  label: fip 
-                  data: fip
-              }
-          }
-  
-  */
-  }
+      fetchPolicy: 'cache-and-network'
+    }
+  },
 };
 </script>

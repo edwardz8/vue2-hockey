@@ -14,6 +14,32 @@ export default {
     options: {
       type: Object,
       default: null,
+    },
+  },
+  data() {
+    return {
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines: {
+              display: true
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: true
+            }
+          }]
+        },
+        legend: {
+          display: true
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
     }
   },
   mounted() {

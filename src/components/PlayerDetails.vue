@@ -56,10 +56,9 @@ export default {
   components: { Chart },
   data() {
     return {
-      pitcher: {},
       loaded: false,
       chartData: null,
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
     };
   },
   methods: {
@@ -104,8 +103,8 @@ export default {
           id: this.$route.params.id,
         };
       },
-      fetchPolicy: 'cache-and-network'
-    }
+      fetchPolicy: "cache-and-network",
+    },
   },
 };
 </script>

@@ -38,9 +38,9 @@
     </div>
 
     <div class="chart-container">
-      <div v-if="!loaded">Loading...</div>
-      <div>
-        <!-- <chart v-if="loaded" :chartdata="chartData" :option="options" :width="100" :height="100" /> -->
+      <div v-if="$apollo.loading">Loading...</div>
+      <div v-else>
+        <chart :chart-data="pitcher" :option="options" :styles="myStyles" />
       </div>
     </div>
   </div>
@@ -56,20 +56,23 @@ export default {
   components: { Chart },
   data() {
     return {
-      loaded: false,
+      pitcher: {},
       chartData: null,
       options: { responsive: true, maintainAspectRatio: false },
+      height: 100
     };
   },
   methods: {
     ...methods,
   },
-  /*  async mounted() {
-    this.loaded = false 
-    const { pitcherlist } = await this.$apollo.pitcher
-    this.chartdata = pitcherlist
-    this.loaded = true
-  }, */
+  computed: {
+    myStyles() {
+      return {
+        height: `${this.height}.px`,
+        position: 'relative'
+      }
+    }
+  },
   apollo: {
     pitcher: {
       query() {

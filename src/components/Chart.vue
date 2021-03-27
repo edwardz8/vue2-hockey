@@ -6,44 +6,29 @@ export default {
   extends: PolarArea,
   mixins: [mixins.reactiveProp],
   props: {
-    // id: { type: Number },
-    chartdata: {
+    chartData: {
       type: Object,
       default: null,
     },
     options: {
       type: Object,
-      default: null,
+      default: null
     },
   },
-  data() {
-    return {
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            },
-            gridLines: {
-              display: true
-            }
-          }],
-          xAxes: [{
-            gridLines: {
-              display: true
-            }
-          }]
-        },
-        legend: {
-          display: true
-        },
-        responsive: true,
-        maintainAspectRatio: false
-      }
-    }
-  },
   mounted() {
-    this.renderChart(this.chartdata, this.options);
-  }
-}
+    this.renderChart(
+      {
+        labels: ["Wins", "Walks/9", "K/9", "HR Allowed"],
+        datasets: [
+          {
+            label: this.chartData.player,
+            backgroundColor: ["rgba(300, 400, 30, 0.3)", "rgba(0, 151, 19, 0.3)", "rgba(0, 800, 100, 0.3)", "rgba(600, 200, 19, 0.3)"],
+            data: [this.chartData.wins, this.chartData.walks_per_nine, this.chartData.ks_per_nine, this.chartData.home_runs_allowed ],
+          },
+        ],
+      },
+      this.options
+    );
+  },
+};
 </script>

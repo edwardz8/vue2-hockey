@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import PlayerDetails from '../components/PlayerDetails.vue'
-import Pitchers from '../components/Pitchers.vue'
+import BatterDetails from '../components/BatterDetails.vue'
+import Players from '../views/Players.vue'
 
 Vue.use(VueRouter)
 
@@ -13,9 +14,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/pitchers',
-    name: 'Pitchers',
-    component: Pitchers
+    path: '/players',
+    name: 'Players',
+    component: Players
   },
   {
     path: '/about',
@@ -30,6 +31,12 @@ const routes = [
     name: "PlayerDetails",
     props: true,
     component: PlayerDetails
+  },
+  {
+    path: "/batter/:id",
+    name: "BatterDetails",
+    props: true,
+    component: BatterDetails
   },
 ]
 

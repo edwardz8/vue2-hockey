@@ -19,7 +19,7 @@
             Welcome to the home of fantasy baseball stats and stories.
           </p>
           <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <router-link to="/pitchers">
+            <router-link to="/players">
               <div class="rounded-md shadow">
                 <a class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-500 hover:bg-green-700 md:py-4 md:text-lg md:px-10">
                   Player Stats

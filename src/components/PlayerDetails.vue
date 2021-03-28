@@ -25,7 +25,7 @@
             >
               Track
             </button>
-            <router-link to="/">
+            <router-link to="/pitchers">
               <button
                 class="text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-white border border-purple text-purple hover:text-black"
               >

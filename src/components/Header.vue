@@ -4,7 +4,7 @@
   >
     <div class="content text-3xl text-center md:text-left">
       <main
-        class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-10 lg:px-4 xl:mt-8"
+        class="mt-10 mx-auto max-w-7xl px-4 sm:mt-4 sm:px-6 md:mt-16 lg:mt-10 lg:px-4 xl:mt-8"
       >
         <div class="sm:text-center lg:text-left">
           <h1

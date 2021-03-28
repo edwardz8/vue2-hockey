@@ -18,13 +18,10 @@ export default {
   mounted() {
     this.renderChart(
       {
-        labels: ["Hits", "HR", "RBI", "SB", "Runs", "At Bats", "Ks"],
+        labels: ["Hits", "HR", "RBI", "SB", "Runs", "Ks"],
         datasets: [
           {
-            // label: this.chartData.name,
-            barPercentage: 0.5,
-            barThickness: 6,
-            maxBarThickness: 8,
+            label: this.chartData.name,
             minBarLength: 2,
             backgroundColor: [
               "rgba(300, 400, 30, 0.3)",
@@ -32,7 +29,7 @@ export default {
               "rgba(0, 800, 100, 0.3)",
               "rgba(600, 200, 19, 0.3)",
               "rgba(600, 200, 19, 0.3)",
-              "rgba(600, 200, 19, 0.3)",
+              "rgba(255, 0, 15, 0.4)",
               "rgba(600, 200, 19, 0.3)",
             ],
             data: [
@@ -41,7 +38,6 @@ export default {
               this.chartData.runs_batted_in,
               this.chartData.stolen_bases,
               this.chartData.runs,
-              this.chartData.at_bats,
               this.chartData.strikeouts
             ],
           },

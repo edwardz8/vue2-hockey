@@ -7,9 +7,9 @@
         <p
           class="logo xl:float-left lg:float-left xl:mr-4 lg:mr-4 md:mr-4 md:my-2 xl:my-2 lg:my-2"
         >
-          <!-- <i :class="matchTeamLogo(batter.team)"></i> -->
+         <i :class="matchTeamLogo(batter.team)"></i>
         </p>
-        <div class="text-center sm:text-left sm:flex-grow">
+        <div class="text-center sm:text-left sm:flex-grow" v-if="batter">
           <div class="mb-4">
             <p class="font-sans text-xl leading-tight mb-2">{{ batter.name }}</p>
             <p class="font-sans text-sm leading-tight text-grey-dark mb-2">
@@ -42,8 +42,8 @@
 
     <div class="chart-container">
       <div v-if="$apollo.loading">Loading...</div>
-      <div v-else>
-        <batter-chart :chart-data="batter" :option="options" :styles="myStyles" />
+      <div v-else class="chart">
+        <batter-chart :chart-data="batter" :option="options" :height="200" />
       </div>
     </div>
   </div>
@@ -72,7 +72,7 @@ export default {
       query() {
         return gql`
           query batter($id: String!) {
-              batters: batters_by_pk(id: $id) {
+              batter: batters_by_pk(id: $id) {
                 name
                 id
                 team

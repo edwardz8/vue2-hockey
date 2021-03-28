@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto">
     <h1 class="mb-1">Batter Projections</h1>
-    <h4 class="mb-4">Charts disabled for batters</h4>
+    <h4 class="mb-4">Click on batters name to view more stats</h4>
 
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -62,8 +62,8 @@
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
                 <tr v-for="batter in batters" :key="batter.id">
-                  <!-- <router-link :to="`/batter/${batter.id}`"
-                  > -->
+                  <router-link :to="`/batter/${batter.id}`"
+                  >
                     <td class="px-4 py-4 whitespace-nowrap">
                       <div class="flex items-center">
                         <div class="flex-shrink-0 h-5 w-5">
@@ -76,7 +76,7 @@
                         </div>
                       </div>
                     </td>
-                  <!-- </router-link> -->
+                  </router-link>
                   <td class="px-4 py-4 whitespace-nowrap">
                     <div class="text-sm text-gray-900">{{ batter.team }}</div>
                   </td>

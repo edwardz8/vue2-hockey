@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto">
     <h1 class="mb-1">Pitcher Projections</h1>
-    <h4 class="mb-4">Click on player name to view more stats</h4>
+    <h4 class="mb-4">Click on pitchers name to view more stats</h4>
 
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

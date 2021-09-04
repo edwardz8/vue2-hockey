@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import PlayerDetails from '../components/PlayerDetails.vue'
 // import BatterDetails from '../components/BatterDetails.vue'
 import Table from '../views/Table.vue'
+import Blog from '../views/Blog.vue'
+import Post from '../views/Post.vue'
 
 Vue.use(VueRouter)
 
@@ -17,6 +19,16 @@ const routes = [
     path: '/table',
     name: 'Table',
     component: Table
+  },
+  {
+    path: '/blog',
+    name: 'Blog',
+    component: Blog
+  },
+  {
+    path: '/blog/:slug',
+    name: 'Post',
+    component: Post
   },
   {
     path: '/about',

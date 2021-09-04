@@ -32,7 +32,7 @@
     </div>
     <div class="container mx-auto flex flex-col items-center">
       <div class="w-full">
-        <img src="../assets/stadium-trees-phone.png" alt="" />
+        <img src="../assets/hockeyphone.png" alt="" />
       </div>
     </div>
   </div>

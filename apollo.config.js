@@ -2,9 +2,9 @@
 module.exports = {
   client: {
     service: {
-      name: 'my-app',
+      name: 'rotorink',
       // URL to the GraphQL API
-      url: 'https://ethical-ostrich-26.hasura.app/v1/graphql',
+      url: 'https://rotorink.hasura.app/v1/graphql',
     },
     // Files processed by the extension
     includes: [

@@ -40,7 +40,7 @@
     <div class="chart-container">
       <div v-if="$apollo.loading">Loading...</div>
       <div v-else>
-        <chart :chart-data="player" :option="options" :height="300" />
+        <chart :chart-data="player" :option="options" :height="120" />
       </div>
     </div>
   </div>

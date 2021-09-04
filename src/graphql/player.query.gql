@@ -1,0 +1,11 @@
+query player($id: ID!) {
+  player(id: $id) {
+    name
+    id
+    team
+    goals 
+    assists 
+    points
+    hits
+  }
+}

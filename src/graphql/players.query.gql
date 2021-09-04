@@ -1,0 +1,14 @@
+query players {
+  players {
+    name
+    team
+    position
+    goals
+    assists
+    points
+    sog
+    hits
+    games
+    id
+  }
+}

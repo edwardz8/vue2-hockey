@@ -21,11 +21,11 @@
   }
   
   #nav a.router-link-exact-active {
-    color: #42b983;
+    color: #002583;
   }
 
   #nav a:hover {
     font-weight: bold;
     font-size: 18px;
-    color: #42b983;
+    color: #4d7cf2;
   }

@@ -7,16 +7,16 @@
         <p
           class="logo xl:float-left lg:float-left xl:mr-4 lg:mr-4 md:mr-4 md:my-2 xl:my-2 lg:my-2"
         >
-          <i :class="matchTeamLogo(pitcher.team)"></i>
+          <!-- <i :class="matchTeamLogo(player.team)"></i> -->
         </p>
-        <div class="text-center sm:text-left sm:flex-grow" v-if="pitcher">
+        <div class="text-center sm:text-left sm:flex-grow" v-if="player">
           <div class="mb-4">
-            <p class="font-sans text-xl leading-tight mb-2">{{ pitcher.player }}</p>
+            <p class="font-sans text-xl leading-tight mb-2">{{ player.name }}</p>
             <p class="font-sans text-sm leading-tight text-grey-dark mb-2">
-              {{ pitcher.team }}
+              {{ player.team }}
             </p>
             <p class="font-sans text-sm leading-tight">
-              Wins: {{ pitcher.wins }} - Innings: {{ pitcher.innings_pitched }}
+              Goals: {{ player.goals }} - Assists: {{ player.assists }}
             </p>
           </div>
           <div class="sm:flex sm:items-center flex-wrap">
@@ -40,14 +40,14 @@
     <div class="chart-container">
       <div v-if="$apollo.loading">Loading...</div>
       <div v-else>
-        <chart :chart-data="pitcher" :option="options" :height="300" />
+        <chart :chart-data="player" :option="options" :height="300" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import methods from "../../methods";
+// import methods from "../../methods";
 import gql from "graphql-tag";
 import Chart from "./Chart.vue";
 
@@ -56,51 +56,42 @@ export default {
   components: { Chart },
   data() {
     return {
-      pitcher: {},
+      player: {},
       chartData: null,
       options: { responsive: true, maintainAspectRatio: false },
-      height: 100
+      height: 100,
     };
   },
-  methods: {
+  /* methods: {
     ...methods,
-  },
+  }, */
   computed: {
     myStyles() {
       return {
         height: `${this.height}.px`,
-        position: 'relative'
-      }
-    }
+        position: "relative",
+      };
+    },
   },
   apollo: {
-    pitcher: {
+    player: {
       query() {
         return gql`
-          query pitcher($id: String!) {
-            pitcher: pitchers_by_pk(id: $id) {
-              player
+          query player($id: Int!) {
+            player: players_by_pk(id: $id) {
+              name
               id
               team
-              wins
-              strikeouts
-              innings_pitched
-              saves
-              era
+              goals
+              assists
+              points
+              sog
               hits
-              walks
-              walks_per_nine
-              ks_per_nine
-              home_runs_allowed
-              games
-              fip
-              war
-              adp
             }
           }
         `;
       },
-      update: (data) => data.pitcher,
+      update: (data) => data.player,
       variables() {
         return {
           id: this.$route.params.id,

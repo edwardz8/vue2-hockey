@@ -2,6 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link>
+      <router-link to="/table">Projections</router-link>
+      <router-link to="/">Articles</router-link>
     </div>
     <router-view/>
   </div>
@@ -14,7 +16,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  // background-color: #cacaca;
+  // background-color: #ebebeb;
 }
 
 #nav {
@@ -23,6 +25,8 @@
   a {
     font-weight: bold;
     color: #2c3e50;
+    margin-left: 1rem;
+    margin-right: 1rem;
 
     &.router-link-exact-active {
       color: #4983ff;

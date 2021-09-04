@@ -16,7 +16,7 @@
           <p
             class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
           >
-            Welcome to the home of hockey daily fantasy sports and betting advice. Sign up for our newsletter to receive our weekly top lineup & player prop selections.
+            Welcome to the home of hockey dfs news, lineups and betting advice. Sign up for our newsletter to receive our weekly top lineup & player prop selections.
           </p>
           <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
             <router-link to="/table">

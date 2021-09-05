@@ -40,7 +40,7 @@
     <div class="chart-container">
       <div v-if="$apollo.loading">Loading...</div>
       <div v-else>
-        <chart :chart-data="player" :option="options" :height="120" />
+        <chart :chart-data="player" :option="options" :height="220" />
       </div>
     </div>
   </div>
@@ -58,7 +58,7 @@ export default {
     return {
       player: {},
       chartData: null,
-      options: { responsive: true, maintainAspectRatio: false },
+      options: { responsive: false, maintainAspectRatio: false },
       height: 100,
     };
   },

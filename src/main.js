@@ -12,9 +12,6 @@ import {
   InMemoryCache
 } from '@apollo/client/core'
 import VueApollo from '@vue/apollo-option'
-// import BlockContent from 'sanity-blocks-vue-component'
-
-// Vue.component('block-content', BlockContent);
 
 Vue.use(VueApollo)
 

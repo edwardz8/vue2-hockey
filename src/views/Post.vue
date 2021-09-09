@@ -6,7 +6,6 @@
       <img v-if="post.image" :src="imageUrlFor(post.image).width(440)" />
       <h6>Provided by: {{ post.name }}</h6>
       <p>{{ post.excerpt }}</p>
-      <p>{{ post.body }}</p>
      <!-- <block-content :blocks="blocks" /> -->
     </div>
   </div>

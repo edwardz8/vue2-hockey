@@ -6,14 +6,13 @@
       <img v-if="post.image" :src="imageUrlFor(post.image).width(440)" />
       <h6>Provided by: {{ post.name }}</h6>
       <p>{{ post.excerpt }}</p>
-     <!-- <block-content :blocks="blocks" /> -->
+      <!-- <block-content :blocks="blocks" /> -->
     </div>
   </div>
 </template>
 
 <script>
 import sanity from "../client";
-// import BlockContent from 'sanity-blocks-vue-component'
 import imageUrlBuilder from "@sanity/image-url";
 const imageBuilder = imageUrlBuilder(sanity);
 
@@ -36,7 +35,7 @@ const query = `*[slug.current == $slug] {
 
 export default {
   name: "Post",
- // components: { BlockContent },
+  // components: { BlockContent },
   data() {
     return {
       loading: true,

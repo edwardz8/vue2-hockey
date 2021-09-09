@@ -13,11 +13,11 @@ import {
 } from '@apollo/client/core'
 import VueApollo from '@vue/apollo-option'
 /* import StoryblokVue from 'storyblok-vue'
-import Page from '@/components/Page'
-
-Vue.use(StoryblokVue)
-Vue.component('page', Page) */
+Vue.use(StoryblokVue) */
 Vue.use(VueApollo)
+
+/* import BlockContent from 'sanity-blocks-vue-component'
+Vue.component('block-content', BlockContent); */
 
 Vue.config.productionTip = false
 

@@ -11,9 +11,13 @@ import {
   createHttpLink,
   InMemoryCache
 } from '@apollo/client/core'
+import StoryblokVue from 'storyblok-vue'
 import VueApollo from '@vue/apollo-option'
+import Page from '@/components/Page'
 
+Vue.use(StoryblokVue)
 Vue.use(VueApollo)
+Vue.component('page', Page)
 
 Vue.config.productionTip = false
 

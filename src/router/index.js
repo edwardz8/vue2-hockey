@@ -6,6 +6,7 @@ import PlayerDetails from '../components/PlayerDetails.vue'
 import Table from '../views/Table.vue'
 import Blog from '../views/Blog.vue'
 import Post from '../views/Post.vue'
+import Contact from '../views/Contact.vue'
 
 Vue.use(VueRouter)
 
@@ -43,6 +44,11 @@ const routes = [
     name: "PlayerDetails",
     props: true,
     component: PlayerDetails
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact
   },
 ]
 

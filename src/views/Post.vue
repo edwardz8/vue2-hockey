@@ -6,7 +6,8 @@
       <img v-if="post.image" :src="imageUrlFor(post.image).width(440)" />
       <h6>Provided by: {{ post.name }}</h6>
       <p>{{ post.excerpt }}</p>
-     <!--  <block-content :blocks="blocks" /> -->
+      <p>{{ post.body }}</p>
+     <!-- <block-content :blocks="blocks" /> -->
     </div>
   </div>
 </template>
@@ -36,7 +37,7 @@ const query = `*[slug.current == $slug] {
 
 export default {
   name: "Post",
-  // components: { BlockContent },
+ // components: { BlockContent },
   data() {
     return {
       loading: true,

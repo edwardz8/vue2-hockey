@@ -13,10 +13,10 @@
         </dl>
       </div>
       <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
-        <img src="../assets/hockey/UFOBag.svg" alt="hockey" class="bg-gray-100 rounded-lg" />
-        <img src="../assets/hockey/Connor_Mcdavid.svg" alt="hockey" class="bg-gray-100 rounded-lg" />
-        <img src="../assets/hockey/PlumbersJersey.svg" alt="hockey" class="bg-gray-100 rounded-lg" />
-        <img src="../assets/hockey/Skates-Retro-Pink-2.svg" alt="hockey" class="bg-gray-100 rounded-lg" />
+        <img src="../assets//UFOBag.svg" alt="hockey" class="bg-gray-100 rounded-lg" />
+        <img src="../assets/Connor_Mcdavid.svg" alt="hockey" class="bg-gray-100 rounded-lg" />
+        <img src="../assets/PlumbersJersey.svg" alt="hockey" class="bg-gray-100 rounded-lg" />
+        <img src="../assets/Skates-Retro-Pink-2.svg" alt="hockey" class="bg-gray-100 rounded-lg" />
       </div>
     </div>
   </div>

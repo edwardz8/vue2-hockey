@@ -1,13 +1,6 @@
 .DS_Store
 node_modules
 /dist
-public/assets/
-/public/assets/
-/public 
-**/*.png 
-**/*.svg
-.png 
-.svg
 
 # local env files
 .env.local

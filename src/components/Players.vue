@@ -1,8 +1,5 @@
 <template>
   <div class="container mx-auto">
-   <!--  <h1 class="mb-1">Player Projections</h1>
-    <h4 class="mb-4">Click on player name to view more stats</h4> -->
-
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -60,6 +57,13 @@
                   </th>
                 </tr>
               </thead>
+                <div v-if="$apollo.loading" class="animate-pulse flex items-center w-100 space-x-4">
+                  <div class="flex-1 space-y-4 py-1 w-100">
+                    <div class="h-4 bg-blue-400 rounded w-100"></div>
+                      <div class="h-4 bg-blue-400 rounded w-100"></div>
+                      <div class="h-4 bg-blue-400 rounded w-100"></div>
+                  </div>
+                </div>
               <tbody class="bg-white divide-y divide-gray-200">
                 <tr v-for="player in players" :key="player.id">
                   <!-- :to="{ name: 'PlayerDetails', params: { id: player.id }}" -->
@@ -142,7 +146,7 @@ export default {
     };
   },
   created() {
-    console.log(players, 'players')
+    console.log(players, "players");
   },
   /*  methods: {
     ...methods

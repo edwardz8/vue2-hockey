@@ -1,18 +1,23 @@
 <template>
   <div class="container-fluid">
     <div class="loading" v-if="loading">Loading...</div>
-    <div class="content" v-if="post">
+    <div v-if="post">
+      <div class="content">
       <h1>{{ post.title }}</h1>
-      <img v-if="post.image" :src="imageUrlFor(post.image).width(440)" />
+      <img v-if="post.image" :src="imageUrlFor(post.image).width(440)" class="post-image" />
       <h6>Provided by: {{ post.name }}</h6>
       <p>{{ post.excerpt }}</p>
-      <!-- <block-content :blocks="blocks" /> -->
+      </div>
+      <div v-html="overviewHtml" class="body">
+        <p>{{post.body}}</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import sanity from "../client";
+import blocksToHtml from "@sanity/block-content-to-html";
 import imageUrlBuilder from "@sanity/image-url";
 const imageBuilder = imageUrlBuilder(sanity);
 
@@ -41,6 +46,7 @@ export default {
       loading: true,
       post: [],
       blocks: [],
+      overviewHtml: {}
     };
   },
   created() {
@@ -54,13 +60,41 @@ export default {
       this.error = this.post = null;
       this.loading = true;
 
+      const serializers = {
+        types: {
+          summaries: props => {
+            const h = blocksToHtml.h;
+            if (!props.node.summaries) {
+              return false;
+            }
+            const summariesArray = props.node.summaries.map(summary => {
+              return h("div", null, [
+                h("p", null, summary.summary),
+                h("span", null, "—"),
+                h("a", { href: summary.url }, summary.author)
+              ]);
+            });
+            return h("div", [
+              h("h1", null, props.node.caption),
+              h("div", null, summariesArray)
+            ]);
+          }
+        }
+      };
+
       sanity.fetch(query, { slug: this.$route.params.slug }).then(
-        (post) => {
+        post => {
           this.loading = false;
           this.post = post;
-          this.blocks = post.body;
+          // this.blocks = post.body;
+          this.overviewHtml = blocksToHtml({
+            blocks: this.post.body,
+            serializers: serializers,
+            dataset: sanity.clientConfig.dataset,
+            projectId: sanity.clientConfig.projectId,
+          });
         },
-        (error) => {
+        error => {
           this.error = error;
         }
       );
@@ -76,9 +110,10 @@ export default {
   margin: 0 auto;
   max-width: 42em;
 }
-.comments-section {
-  display: flex;
-  flex-direction: column;
+.body {
+  margin: 0 auto;
+  max-width: 42em;
+  margin-bottom: 20rem;
 }
 textarea {
   margin-top: 1rem;
@@ -119,6 +154,10 @@ blockquote {
 .content h1 {
   font-size: 3em;
   margin: 1em 0;
+}
+
+.post-image {
+  border-radius: 8px;
 }
 
 @media (max-width: 1020px) {

@@ -1,14 +1,38 @@
 export default {
-    matchTeamLogo(team) {
-        switch (team) {
-            case "ATL":
-                return "bbclub-ATL ATL";
+    matchPlayerImage(player) {
+        switch (player) {
+            case "Auston Matthews":
+                return require("./src/assets/Auston_Matthews.svg");
                 break;
-            case "HOU":
-                return "bbclub-HOU";
+            case "Connor McDavid":
+                return require("./src/assets/Connor_Mcdavid.svg");
+                break;
+            case "Alex Ovechkin":
+                return require("./src/assets/ovi.svg");
+                break;
+            case "William Nylander":
+                return require("./src/assets/William_Nylander.svg");
+                break;
+            case "John Tavares":
+                return require("./src/assets/John_Tavares.svg");
+                break;
+            case "Johnny Gaudreau":
+                return require("./src/assets/johnny_g.svg");
+                break;
+            case "Sidney Crosby":
+                return require("./src/assets/crosby.svg");
+                break;
+            case "Sean Monahan":
+                return require("./src/assets/Sean Monahan.svg");
+                break;
+            case "Conner McDavid":
+                return require("./src/assets/Connor_Mcdavid.svg");
+                break;
+            case "Conner McDavid":
+                return require("./src/assets/Connor_Mcdavid.svg");
                 break;
             default:
-                return "bbclub-mlb";
+                return require("./src/assets/FlapjackBag.svg");
         }
     }
 }

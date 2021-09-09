@@ -7,7 +7,7 @@
         <p
           class="logo xl:float-left lg:float-left xl:mr-4 lg:mr-4 md:mr-4 md:my-2 xl:my-2 lg:my-2"
         >
-          <!-- <i :class="matchTeamLogo(player.team)"></i> -->
+          <img class="player-img" :src="matchPlayerImage(player.name)" />
         </p>
         <div class="text-center sm:text-left sm:flex-grow" v-if="player">
           <div class="mb-4">
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-// import methods from "../../methods";
+import methods from "../../methods";
 import gql from "graphql-tag";
 import Chart from "./Chart.vue";
 
@@ -62,9 +62,9 @@ export default {
       height: 100,
     };
   },
-  /* methods: {
+  methods: {
     ...methods,
-  }, */
+  },
   computed: {
     myStyles() {
       return {
@@ -102,3 +102,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.player-img {
+  width: 180px;
+}
+</style>

@@ -22,7 +22,7 @@ export default {
         datasets: [
           {
             label: this.chartData.player,
-            backgroundColor: ["rgba(300, 400, 30, 0.3)", "rgba(0, 151, 19, 0.3)", "rgba(255, 0, 15, 0.4)", "rgba(600, 200, 19, 0.3)"],
+            backgroundColor: ["rgba(255, 0, 0, 0.3)", "rgba(0, 151, 19, 0.3)", "rgba(191, 0, 255, 0.3)", "rgba(0, 149, 255, 0.3)"],
             data: [this.chartData.goals, this.chartData.assists, this.chartData.sog, this.chartData.hits ],
           },
         ],

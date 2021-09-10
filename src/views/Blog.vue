@@ -1,7 +1,7 @@
 <template>
   <div class="articles">
-    <h1>rotorink</h1>
-    <p>betting, dfs hockey lineups and prospect articles</p>
+    <h2 class="font-mono text-lg text-gray-800 text-center">rotorink</h2>
+     <h4 class="mt-2 mb-2 text-center">dfs hockey lineups, player props and prospect articles</h4>
     <div class="posts">
       <div class="loading" v-if="loading">Loading...</div>
       <div class="container">

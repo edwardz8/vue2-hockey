@@ -12,9 +12,15 @@ import {
   InMemoryCache
 } from '@apollo/client/core'
 import VueApollo from '@vue/apollo-option'
+import VueGtag from "vue-gtag";
 /* import StoryblokVue from 'storyblok-vue'
 Vue.use(StoryblokVue) */
 Vue.use(VueApollo)
+Vue.use(VueGtag, {
+  config: { id: "UA-207280337-1" }
+}, router);
+
+
 
 /* import BlockContent from 'sanity-blocks-vue-component'
 Vue.component('block-content', BlockContent); */

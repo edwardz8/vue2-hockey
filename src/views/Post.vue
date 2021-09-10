@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid post-container">
     <div class="loading" v-if="loading">Loading...</div>
     <div v-if="post">
       <div class="content">
@@ -8,7 +8,7 @@
       <h6>Provided by: {{ post.name }}</h6>
       <p>{{ post.excerpt }}</p>
       </div>
-      <div v-html="overviewHtml" class="body">
+      <div v-html="overviewHtml" class="body mx-1">
         <p>{{post.body}}</p>
       </div>
     </div>
@@ -104,6 +104,10 @@ export default {
 </script>
 
 <style scoped>
+.post-container {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 .content {
   display: flex;
   flex-direction: column;

@@ -32,7 +32,7 @@ export default {
                 return require("./src/assets/Connor_Mcdavid.svg");
                 break;
             default:
-                return require("./src/assets/FlapjackBag.svg");
+                return require("./src/assets/Skates-Retro-Pink-2.svg");
         }
     }
 }

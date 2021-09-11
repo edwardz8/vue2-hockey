@@ -1,9 +1,17 @@
 <template>
   <div class="container mx-auto">
+    <div class="relative text-gray-800 ml-4 mr-4 flex mb-2">
+      <input v-model="searchQuery" type="search" name="serch" placeholder="Player Search" class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
+      <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
+        <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
+          <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
+        </svg>
+      </button>
+    </div>
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <div class="shadow overflow-hidden border border-gray-200 sm:rounded-lg">
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
@@ -65,7 +73,7 @@
                   </div>
                 </div>
               <tbody class="bg-white divide-y divide-gray-200">
-                <tr v-for="player in players" :key="player.id">
+                <tr v-for="player in sortedPlayers" :key="player.id">
                   <!-- :to="{ name: 'PlayerDetails', params: { id: player.id }}" -->
                   <router-link :to="`/player/${player.id}`">
                     <td class="px-4 py-4 whitespace-nowrap">
@@ -113,13 +121,16 @@
           </div>
         </div>
       </div>
+     <!--  <div class="container mx-auto flex justify-content-center">
+        <button @click="prevPage">Previous</button> 
+        <button @click="nextPage">Next</button>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
 import gql from "graphql-tag";
-// import methods from '../../methods'
 
 const GET_PLAYERS = gql`
   query players {
@@ -142,20 +153,29 @@ export default {
   data() {
     return {
       players: [],
+      searchQuery: null,
       loading: true,
     };
   },
   created() {
     console.log(players, "players");
   },
-  /*  methods: {
-    ...methods
-  }, */
   apollo: {
     players: {
       query: GET_PLAYERS,
     },
   },
+  computed: {
+    sortedPlayers() {
+      if (this.searchQuery) {
+        return this.players.filter(p => {
+          return this.searchQuery.toLowerCase().split(" ").every(v => p.name.toLowerCase().includes(v))
+        })
+      } else {
+        return this.players
+      }
+    }
+  }
 };
 </script>
 

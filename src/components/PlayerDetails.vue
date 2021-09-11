@@ -1,13 +1,13 @@
 <template>
   <div class="container mx-auto py-2">
     <div
-      class="border m-6 rounded-lg bg-white mx-auto max-w-lg shadow-lg rounded-lg overflow-hidden"
+      class="bg-white mx-auto max-w-lg overflow-hidden"
     >
-      <div class="clearfix sm:flex sm:items-center px-12 py-4 hover:bg-gray-300">
+      <div class="clearfix sm:flex sm:items-center px-12 py-4 mx-2 rounded hover:bg-gray-200">
         <p
-          class="logo xl:float-left lg:float-left xl:mr-4 lg:mr-4 md:mr-4 md:my-2 xl:my-2 lg:my-2"
+          class="logo flex justify-content-center text-align-center align-items-center lg:mr-4 md:mr-4 md:my-2 xl:my-2 lg:my-2"
         >
-          <img class="player-img" :src="matchPlayerImage(player.name)" />
+          <img class="player-img flex justify-content-center text-align-center align-items-center" :src="matchPlayerImage(player.name)" />
         </p>
         <div class="text-center sm:text-left sm:flex-grow" v-if="player">
           <div class="mb-4">
@@ -20,11 +20,11 @@
             </p>
           </div>
           <div class="sm:flex sm:items-center flex-wrap">
-            <button
+            <!-- <button
               class="text-xs font-semibold rounded-full px-4 py-1 mx-3 leading-normal bg-white border border-blue text-blue hover:text-black"
             >
               Track
-            </button>
+            </button> -->
             <router-link to="/players">
               <button
                 class="text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-white border border-purple text-purple hover:text-black"
@@ -40,7 +40,7 @@
     <div class="chart-container">
       <div v-if="$apollo.loading">Loading...</div>
       <div v-else>
-        <chart :chart-data="player" :option="options" :height="300" />
+        <chart :chart-data="player" :option="options" :height="280" />
       </div>
     </div>
   </div>
@@ -106,5 +106,6 @@ export default {
 <style>
 .player-img {
   width: 180px;
+  margin: 0 auto;
 }
 </style>

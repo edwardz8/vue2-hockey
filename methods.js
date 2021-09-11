@@ -31,6 +31,9 @@ export default {
             case "Conner McDavid":
                 return require("./src/assets/Connor_Mcdavid.svg");
                 break;
+            case "Carey Price":
+                return require("./src/assets/Carey_Price.svg");
+                break;
             default:
                 return require("./src/assets/Skates-Retro-Pink-2.svg");
         }

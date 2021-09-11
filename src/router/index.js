@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import PlayerDetails from '../components/PlayerDetails.vue'
-// import BatterDetails from '../components/BatterDetails.vue'
+import GoalieDetails from '../components/GoalieDetails.vue'
 import Table from '../views/Table.vue'
 import Blog from '../views/Blog.vue'
 import Post from '../views/Post.vue'
@@ -44,6 +44,12 @@ const routes = [
     name: "PlayerDetails",
     props: true,
     component: PlayerDetails
+  },
+  {
+    path: "/goalie/:id",
+    name: "GoalieDetails",
+    props: true,
+    component: GoalieDetails
   },
   {
     path: '/contact',

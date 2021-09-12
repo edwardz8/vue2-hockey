@@ -41,6 +41,7 @@ export default {
   },
   methods: {
       async sendForm() {
+         // document.querySelector('form').addEventListener('submit')
             let formName = this.$refs.formTag.getAttribute('name');
         
             let formData = new FormData();
@@ -48,7 +49,8 @@ export default {
             formData.append('form-name', formName);
             let resp = await fetch('https://rotorink0.netlify.com/#/contact', {
                 method:'POST',
-                body:formData
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString(),
             });
             // assume ok, although double check
             alert('Submitted!');

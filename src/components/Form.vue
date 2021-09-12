@@ -8,13 +8,14 @@
     <div class="header-group items-center justify-center py-2 px-4 sm:px-2 lg:px-2">
      <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">rotorink newsletter 🏒</h2>
     <div class="max-w-md w-full form-container">
-      <form @submit.prevent="sendForm" action="/" name="newsletter" data-netlify="true" class="mt-2 space-y-3" method="POST">
+      <form @submit.prevent="sendForm" id="newsletterForm" action="/" name="newsletter" data-netlify="true" class="mt-2 space-y-3" method="post" data-netlify-honeypot="bot-field"
+          enctype="application/x-www-form-urlencoded">
         <!-- name="newsletter-form" if name="hpfield" fails -->
         <input type="hidden" name="form-name" value="newsletter" />
         <div class="rounded-md shadow-sm">
           <div>
             <label for="email" class="sr-only">Email address</label>
-            <input v-model="form.email" id="email" name="email" type="email" autocomplete="email" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
+            <input v-model="formData.email" id="email" name="email" type="email" autocomplete="email" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
           </div>
         </div>
         <div>
@@ -36,33 +37,41 @@ import axios from 'axios'
 export default {
   data() {
     return {
-        form: {
-            email: "",
+        formData: {
+            email: null,
         }
     };
   },
   methods: {
       encode(data) {
-          return Object.keys(data)
-          .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-          .join('&')
+          const formData = new FormData()
+
+          for (const key of Object.keys(data)) {
+              formData.append(key, data[key])
+          }
+
+          return formData 
       },
-      sendForm() {
-          fetch('https://rotorink0.netlify.app/#/contact', {
-              method: 'POST',
-              headers: {
-                  "Content-Type": "application/x-www-form-urlencoded"
-              },
-              body: this.encode({
-                  'form-name': 'newsletter',
-                  ...this.form
-              })
-          })
-          .then(() => {
-              alert('Submitted!');
-              console.log('form submitted', )
-          })
-          .catch(e => console.error(e))
+      sendForm(e) {
+          const axiosConfig = {
+                header: { "Content-Type": "application/x-www-form-urlencoded" }
+            };
+
+            axios.post(
+                location.href,
+                this.encode({
+                    'form-name': e.target.getAttribute('name'),
+                    ...this.formData 
+                }),
+                axiosConfig
+            )
+            .then(data => console.log(data))
+            .catch(error => console.log(error))
+            .then(document.getElementById('newsletterForm').innerHTML = `
+                <div>
+                    Thanks for subscribing to the rotorink hockey metaverse newsletter. 
+                </div>
+            `)
         }
   }
 };

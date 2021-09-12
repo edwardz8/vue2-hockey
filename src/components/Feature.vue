@@ -34,6 +34,7 @@ export default {
     { name: 'Prospects', description: 'Keep up with future stars 🏒' },
     { name: 'Dynasty Hockey', description: 'Season-long and dynasty league hockey articles 🥅' },
     { name: 'Player News', description: 'Trending player updates 💻' },
+    { name: 'Hockey Metaverse', description: 'Non-fungible token hockey assets arriving soon 🖼️ 🌎' },
   ]
     }
   },

@@ -1,16 +1,19 @@
 <template>
-<div class="contact">
-<Feature />
+<div>
+    <Form/>
+    <div class="contact">
+    <Feature />
+    </div>
 </div>
 </template>
 
 <script>
 import Feature from '@/components/Feature.vue'
-// import Newsletter from '@/components/Newsletter.vue'
+import Form from '@/components/Form.vue'
 
 export default {
     name: 'Contact',
-    components: { Feature }
+    components: { Feature, Form }
 }
 </script>
 

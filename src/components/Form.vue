@@ -8,10 +8,9 @@
     <div class="header-group items-center justify-center py-2 px-4 sm:px-2 lg:px-2">
      <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">rotorink newsletter 🏒</h2>
     <div class="max-w-md w-full form-container">
-      <form @submit.prevent="sendForm" id="newsletterForm" action="/" name="newsletter" data-netlify="true" class="mt-2 space-y-3" method="post" data-netlify-honeypot="bot-field"
+      <form id="newsletterForm" action="/" name="newsletter" data-netlify="true" class="mt-2 space-y-3" method="post"
           enctype="application/x-www-form-urlencoded">
-        <!-- name="newsletter-form" if name="hpfield" fails -->
-        <input type="hidden" name="form-name" value="newsletter" />
+        <!-- <input class="hidden" name="hpfield" value="newsletter" /> -->
         <div class="rounded-md shadow-sm">
           <div>
             <label for="email" class="sr-only">Email address</label>
@@ -19,7 +18,7 @@
           </div>
         </div>
         <div>
-          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button @click.prevent="sendForm" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Get Newsletter
           </button>
         </div>
@@ -60,14 +59,14 @@ export default {
             axios.post(
                 location.href,
                 this.encode({
-                    'form-name': e.target.getAttribute('name'),
+                    'form-name': e.target.getAttribute("name"),
                     ...this.formData 
                 }),
                 axiosConfig
             )
             .then(data => console.log(data))
             .catch(error => console.log(error))
-            .then(document.getElementById('newsletterForm').innerHTML = `
+            .then(document.getElementById("newsletterForm").innerHTML = `
                 <div>
                     Thanks for subscribing to the rotorink hockey metaverse newsletter. 
                 </div>

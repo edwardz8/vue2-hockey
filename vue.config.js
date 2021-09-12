@@ -1,4 +1,4 @@
-const path = require("path");
+/* const path = require("path");
 const PrerenderSPAPlugin = require("prerender-spa-plugin");
 
 module.exports = {
@@ -13,4 +13,4 @@ module.exports = {
       }),
     ],
   },
-};
+}; */

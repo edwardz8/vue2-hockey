@@ -8,7 +8,7 @@
     <div class="header-group items-center justify-center py-2 px-4 sm:px-2 lg:px-2">
      <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">rotorink newsletter 🏒</h2>
     <div class="max-w-md w-full form-container">
-      <form id="newsletterForm" action="/" name="newsletter" data-netlify="true" class="mt-2 space-y-3" method="post"
+      <form id="newsletterForm" action="/" name="newsletter" ref="formTag" data-netlify="true" class="mt-2 space-y-3" method="post"
           enctype="application/x-www-form-urlencoded">
         <!-- <input class="hidden" name="hpfield" value="newsletter" /> -->
         <div class="rounded-md shadow-sm">
@@ -34,14 +34,30 @@
 import axios from 'axios'
 
 export default {
+    el: '#newsletterForm',
   data() {
     return {
-        formData: {
-            email: null,
-        }
+        email: ''
     };
   },
-  methods: {
+  methods:{
+		async sendForm() {
+			let formName = this.$refs.formTag.getAttribute('name');
+		
+			let formData = new FormData();
+			formData.append('email', this.email);
+			formData.append('form-name', formName);
+
+			let resp = await fetch('/', {
+				method:'POST',
+				body:formData
+			});
+			alert('Submitted!');
+
+
+		}
+	}
+ /*  methods: {
       encode(data) {
           const formData = new FormData()
 
@@ -72,7 +88,7 @@ export default {
                 </div>
             `)
         }
-  }
+  } */
 };
 </script>
 

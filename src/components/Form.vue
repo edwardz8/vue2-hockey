@@ -8,7 +8,7 @@
     <div class="header-group items-center justify-center py-2 px-4 sm:px-2 lg:px-2">
      <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">rotorink newsletter 🏒</h2>
     <div class="max-w-md w-full form-container">
-      <form ref="formTag" action="/" @submit.prevent="sendForm" name="newsletter" data-netlify="true" class="mt-2 space-y-3" method="post">
+      <form ref="formTag" action="/" name="newsletter" data-netlify="true" class="mt-2 space-y-3" method="post">
         <!-- name="newsletter-form" if name="hpfield" fails -->
         <input type="hidden" name="form-name" value="newsletter" />
         <div class="rounded-md shadow-sm">
@@ -18,7 +18,7 @@
           </div>
         </div>
         <div>
-          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button @click.prevent="sendForm" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Get Newsletter
           </button>
         </div>

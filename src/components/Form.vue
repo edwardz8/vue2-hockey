@@ -8,12 +8,13 @@
     <div class="header-group items-center justify-center py-2 px-4 sm:px-2 lg:px-2">
      <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">rotorink newsletter 🏒</h2>
     <div class="max-w-md w-full form-container">
-      <form netlify action="/" class="mt-2 space-y-3" method="POST" netlify-honeypot="hpfield" name="newsletter-form" ref="formTag">
-        <input type="hidden" name="hpfield" />
+      <form name="newsletter-form" ref="formTag" data-netlify="true" action="https://rotorink0.netlify.app" class="mt-2 space-y-3" method="POST" netlify-honeypot="bot-field">
+        <!-- name="newsletter-form" if name="hpfield" fails -->
+        <input type="hidden" name="newsletter-form" value="newsletter-form" />
         <div class="rounded-md shadow-sm">
           <div>
-            <label for="email-address" class="sr-only">Email address</label>
-            <input id="email-address" name="email" type="email" autocomplete="email" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
+            <label for="email" class="sr-only">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
           </div>
         </div>
         <div>
@@ -55,11 +56,6 @@ export default {
 </script>
 
 <style scoped>
-/* .header {
-  padding: 60px;
-  text-align: center;
-} */
-
 .header {
   position: relative;
   text-align: center;

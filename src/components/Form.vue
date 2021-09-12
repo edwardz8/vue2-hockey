@@ -8,13 +8,12 @@
     <div class="header-group items-center justify-center py-2 px-4 sm:px-2 lg:px-2">
      <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">rotorink newsletter 🏒</h2>
     <div class="max-w-md w-full form-container">
-      <form id="newsletterForm" action="/" name="newsletter" ref="formTag" data-netlify="true" class="mt-2 space-y-3" method="post"
-          enctype="application/x-www-form-urlencoded">
+      <form id="newsletterForm" method="post" name="newsletter" ref="formTag" data-netlify="true" action="/" class="mt-2 space-y-3">
         <!-- <input class="hidden" name="hpfield" value="newsletter" /> -->
         <div class="rounded-md shadow-sm">
           <div>
             <label for="email" class="sr-only">Email address</label>
-            <input v-model="formData.email" id="email" name="email" type="email" autocomplete="email" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
+            <input v-model="email" id="email" name="email" type="email" autocomplete="email" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
           </div>
         </div>
         <div>
@@ -31,16 +30,15 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
-    el: '#newsletterForm',
   data() {
     return {
         email: ''
     };
   },
-  methods:{
+  methods: {
 		async sendForm() {
 			let formName = this.$refs.formTag.getAttribute('name');
 		
@@ -48,7 +46,7 @@ export default {
 			formData.append('email', this.email);
 			formData.append('form-name', formName);
 
-			let resp = await fetch('/', {
+			let resp = await fetch('https://rotorink0.netlify.app/#/contact', {
 				method:'POST',
 				body:formData
 			});
@@ -57,29 +55,7 @@ export default {
 
 		}
 	}
- /*  methods: {
-      encode(data) {
-          const formData = new FormData()
-
-          for (const key of Object.keys(data)) {
-              formData.append(key, data[key])
-          }
-
-          return formData 
-      },
-      sendForm(e) {
-          const axiosConfig = {
-                header: { "Content-Type": "application/x-www-form-urlencoded" }
-            };
-
-            axios.post(
-                location.href,
-                this.encode({
-                    'form-name': e.target.getAttribute("name"),
-                    ...this.formData 
-                }),
-                axiosConfig
-            )
+ /* 
             .then(data => console.log(data))
             .catch(error => console.log(error))
             .then(document.getElementById("newsletterForm").innerHTML = `

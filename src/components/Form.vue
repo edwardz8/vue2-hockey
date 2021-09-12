@@ -47,7 +47,7 @@ export default {
             let formData = new FormData();
             formData.append('email', this.email);
             formData.append('form-name', formName);
-            let resp = await fetch('https://rotorink0.netlify.com/#/contact', {
+            let resp = await fetch('https://rotorink0.netlify.app/#/contact', {
                 method:'POST',
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: new URLSearchParams(formData).toString(),

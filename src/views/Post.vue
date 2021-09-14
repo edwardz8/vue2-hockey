@@ -3,13 +3,17 @@
     <div class="loading" v-if="loading">Loading...</div>
     <div v-if="post">
       <div class="content">
-      <h1>{{ post.title }}</h1>
-      <img v-if="post.image" :src="imageUrlFor(post.image).width(440)" class="post-image" />
-      <h6>Provided by: {{ post.name }}</h6>
-      <p>{{ post.excerpt }}</p>
+        <h1>{{ post.title }}</h1>
+        <img
+          v-if="post.image"
+          :src="imageUrlFor(post.image).width(440)"
+          class="post-image"
+        />
+        <h6>Provided by: {{ post.name }}</h6>
+        <p>{{ post.excerpt }}</p>
       </div>
       <div v-html="overviewHtml" class="body mx-1">
-        <p>{{post.body}}</p>
+        <p class="text">{{ post.body }}</p>
       </div>
     </div>
   </div>
@@ -46,7 +50,7 @@ export default {
       loading: true,
       post: [],
       blocks: [],
-      overviewHtml: {}
+      overviewHtml: {},
     };
   },
   created() {
@@ -62,28 +66,28 @@ export default {
 
       const serializers = {
         types: {
-          summaries: props => {
+          summaries: (props) => {
             const h = blocksToHtml.h;
             if (!props.node.summaries) {
               return false;
             }
-            const summariesArray = props.node.summaries.map(summary => {
+            const summariesArray = props.node.summaries.map((summary) => {
               return h("div", null, [
                 h("p", null, summary.summary),
                 h("span", null, "—"),
-                h("a", { href: summary.url }, summary.author)
+                h("a", { href: summary.url }, summary.author),
               ]);
             });
             return h("div", [
               h("h1", null, props.node.caption),
-              h("div", null, summariesArray)
+              h("div", null, summariesArray),
             ]);
-          }
-        }
+          },
+        },
       };
 
       sanity.fetch(query, { slug: this.$route.params.slug }).then(
-        post => {
+        (post) => {
           this.loading = false;
           this.post = post;
           // this.blocks = post.body;
@@ -94,7 +98,7 @@ export default {
             projectId: sanity.clientConfig.projectId,
           });
         },
-        error => {
+        (error) => {
           this.error = error;
         }
       );
@@ -118,6 +122,12 @@ export default {
   margin: 0 auto;
   max-width: 42em;
   margin-bottom: 20rem;
+  margin-top: 5rem;
+  text-align: left;
+  font-size: 18px;
+}
+.text {
+  margin-top: 1rem !important;
 }
 textarea {
   margin-top: 1rem;
@@ -182,8 +192,7 @@ blockquote {
   p,
   ul,
   ol {
-    font-size: 1.2rem;
-    margin: 1em 0;
+    margin: 1em 1rem;
   }
 }
 </style>

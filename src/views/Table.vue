@@ -7,7 +7,7 @@
     <div class="inline-flex mt-2 mb-4">
      <button
         @click="current = 'Goalies'"
-        class="cursor-not-allowed bg-gray-300 hover:bg-red-300 text-gray-800 font-bold py-2 px-4 rounded-l"
+        class="bg-gray-300 hover:bg-red-300 text-gray-800 font-bold py-2 px-4 rounded-l"
       >Goalies</button>
      <button
         @click="current = 'Players'"
